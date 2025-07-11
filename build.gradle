@@ -1,0 +1,27 @@
+plugins {
+	id 'java'
+}
+
+group = 'agents'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	    implementation 'com.google.adk:google-adk:0.1.0'
+}
+
+
+tasks.register('runAgent', JavaExec) {
+	standardInput = System.in
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = "agents.multitool.RecipeAgent"
+}
