@@ -1,5 +1,7 @@
 plugins {
 	id 'java'
+	id 'org.springframework.boot' version '3.2.5'
+	id 'io.spring.dependency-management' version '1.1.4'
 }
 
 group = 'agents'
@@ -17,6 +19,7 @@ repositories {
 
 dependencies {
 	    implementation 'com.google.adk:google-adk:0.1.0'
+	    implementation 'org.springframework.boot:spring-boot-starter-web'
 }
 
 
@@ -24,4 +27,9 @@ tasks.register('runAgent', JavaExec) {
 	standardInput = System.in
 	classpath = sourceSets.main.runtimeClasspath
 	mainClass = "agents.multitool.RecipeAgent"
+}
+
+tasks.register('bootRunHello', JavaExec) {
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = "HelloApplication"
 }
